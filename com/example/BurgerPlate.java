@@ -11,12 +11,15 @@ import java.util.Scanner;
 public final class BurgerPlate {
 
   // Initialize variables
-  static final double BURGER1SIZE = 8.7;
-  static final double BURGER2SIZE = 10.3;
-  static final double BURGER1COST = 5.99;
-  static final double BURGER2COST = 7.25;
-  static final double PLATE_SIDE_LENGTH = 35.0;
-  static final double HST = 1.13;
+  static double BURGER1SIZE = 8.7;
+  static double BURGER2SIZE = 10.3;
+  static double BURGER1COST = 5.99;
+  static double BURGER2COST = 7.25;
+  static double PLATE_SIDE_LENGTH = 35.0;
+  static double HST = 1.13;
+
+  //Fix magic number error.
+  static final int TOTAL_INNER_TRIANGLE_ANGLE = 180;
 
   /** Private constructor to prevent instantiation. */
   private BurgerPlate() {
@@ -119,7 +122,7 @@ public final class BurgerPlate {
 
 
   static double getThirdAngle(final double angle1, final double angle2) {
-    double angle3 = 180 - angle1 - angle2;
+    double angle3 = TOTAL_INNER_TRIANGLE_ANGLE - angle1 - angle2;
     return angle3;
   }
 
