@@ -150,7 +150,7 @@ public final class BurgerPlate {
   }
 
   static double calculateTriArea(
-      /** Here is some text to make lines <80. */
+      // Here is some text to make lines <80.
       final double angle1,
       final double angle2,
       final double angle3) {
