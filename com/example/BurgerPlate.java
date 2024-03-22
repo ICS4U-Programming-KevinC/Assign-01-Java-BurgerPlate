@@ -12,16 +12,20 @@ import java.util.Scanner;
 // BurgerPlate class
 public final class BurgerPlate {
   // Initialize variables
-  /** Initialize the diameter for a size 1 burger */
+  /** Initialize the diameter for a size 1 burger. */
   static final double BURGER1SIZE = 8.7;
-  /** Initialize the diameter for a size 2 burger */
+  /** Initialize the diameter for a size 2 burger. */
   static final double BURGER2SIZE = 10.3;
+  /** Initialize the cost for a size 1 burger. */
   static final double BURGER1COST = 5.99;
+  /** Initialize the cost for a size 2 burger. */
   static final double BURGER2COST = 7.25;
+  /** Initialize the first plate side length. */
   static final double PLATE_SIDE_LENGTH = 35.0;
+  /** Initialize sales tax. */
   static final double HST = 1.13;
 
-  //Fix magic number error.
+  /** Fix magic number error. */
   static final int TOTAL_INNER_TRIANGLE_ANGLE = 180;
 
   /** Private constructor to prevent instantiation. */
@@ -73,7 +77,7 @@ public final class BurgerPlate {
           // Calculate burger data based on input.
           if (burgerSize == 1) {
             double burgerArea = getBurgerArea(BURGER1SIZE);
-            double triangleArea = 
+            double triangleArea =
               calculateTriangleArea(angle1, angle2, angle3);
             burgerCount = getBurgerCount(burgerArea, triangleArea);
             subtotal = burgerCount * BURGER1COST;
@@ -81,7 +85,7 @@ public final class BurgerPlate {
             triangleType = calculateTriangleType(angle1, angle2, angle3);
           } else if (burgerSize == 2) {
             double burgerArea = getBurgerArea(BURGER2SIZE);
-            double triangleArea = 
+            double triangleArea =
               calculateTriangleArea(angle1, angle2, angle3);
             burgerCount = getBurgerCount(burgerArea, triangleArea);
             subtotal = burgerCount * BURGER2COST;
@@ -125,22 +129,21 @@ public final class BurgerPlate {
     sc.close();
   }
 
-
   static double getThirdAngle(final double angle1, final double angle2) {
     double angle3 = TOTAL_INNER_TRIANGLE_ANGLE - angle1 - angle2;
     return angle3;
   }
 
-  static double calculateTriangleArea
-  (final double angle1, final double angle2, final double angle3) {
-    double secondSide = 
+  static double calculateTriangleArea(
+    final double angle1, final double angle2, final double angle3) {
+    double secondSide =
       Math.sin(angle1) / (Math.sin(angle3) / PLATE_SIDE_LENGTH);
     double height = Math.sin(angle2) * secondSide;
     return (PLATE_SIDE_LENGTH * height) / 2;
   }
 
-  static String calculateTriangleType
-  (final double angle1, final double angle2, final double angle3) {
+  static String calculateTriangleType(
+    final double angle1, final double angle2, final double angle3) {
     if (angle1 == angle2 && angle2 == angle3) {
       return "Equilateral";
     } else if (angle1 == angle2 || angle2 == angle3 || angle1 == angle3) {
