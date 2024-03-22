@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
 /**
- * Calculates the amount of burgers you fit on your triangle shaped plate, then the cost of those
- * burgers and type of triangle the plate is.
+ * Calculates the amount of burgers you fit on your triangle shaped plate.
+ *
+ * <p>Then the cost of those burgers and type of triangle the plate is.
  *
  * @author Kevin Csiffary
  * @version 1.0
@@ -137,14 +138,6 @@ public final class BurgerPlate {
     return angle3;
   }
 
-  static double calculateTriArea(
-      final double angle1, final double angle2, final double angle3) {
-    double sinLaw = Math.sin(angle3) / PLATE_SIDE_LENGTH;
-    double secondSide = Math.sin(angle1) / sinLaw;
-    double height = Math.sin(angle2) * secondSide;
-    return (PLATE_SIDE_LENGTH * height) / 2;
-  }
-
   static String calculateTriangleType(
       final double angle1, final double angle2, final double angle3) {
     if (angle1 == angle2 && angle2 == angle3) {
@@ -154,6 +147,14 @@ public final class BurgerPlate {
     } else {
       return "Scalene";
     }
+  }
+
+  static double calculateTriArea( // Here is some text to make lines <80.
+      final double angle1, final double angle2, final double angle3) {
+    double sinLaw = Math.sin(angle3) / PLATE_SIDE_LENGTH;
+    double secondSide = Math.sin(angle1) / sinLaw;
+    double height = Math.sin(angle2) * secondSide;
+    return (PLATE_SIDE_LENGTH * height) / 2;
   }
 
   static double getBurgerArea(final double burgerDiameter) {
