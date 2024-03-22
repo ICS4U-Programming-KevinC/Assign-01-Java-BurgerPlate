@@ -149,8 +149,11 @@ public final class BurgerPlate {
     }
   }
 
-  static double calculateTriArea(// Here is some text to make lines <80.
-      final double angle1, final double angle2, final double angle3) {
+  static double calculateTriArea(
+      /** Here is some text to make lines <80. */
+      final double angle1,
+      final double angle2,
+      final double angle3) {
     double sinLaw = Math.sin(angle3) / PLATE_SIDE_LENGTH;
     double secondSide = Math.sin(angle1) / sinLaw;
     double height = Math.sin(angle2) * secondSide;
