@@ -1,14 +1,13 @@
 import java.util.Scanner;
 
 /**
- * Change me.
+ * Calculates the amount of burgers you fit on your triangle shaped plate,
+ * then the cost of those burgers and type of triangle the plate is.
  *
  * @author Kevin Csiffary
  * @version 1.0
  * @since 2024-03-22
  */
-
-// BurgerPlate class
 public final class BurgerPlate {
 
   // Initialize variables
@@ -56,7 +55,7 @@ public final class BurgerPlate {
         int burgerSize = sc.nextInt();
 
         // Calculate third angle.
-        double angle3 = GetThirdAngle(angle1, angle2);
+        double angle3 = getThirdAngle(angle1, angle2);
 
         if (angle3 > 0) {
           // Initialize variables to be accessed in output.
@@ -67,19 +66,19 @@ public final class BurgerPlate {
 
           // Calculate burger data based on input.
           if (burgerSize == 1) {
-            double burgerArea = GetBurgerArea(BURGER1SIZE);
-            double triangleArea = CalculateTriangleArea(angle1, angle2, angle3);
-            burgerCount = GetBurgerCount(burgerArea, triangleArea);
+            double burgerArea = getBurgerArea(BURGER1SIZE);
+            double triangleArea = calculateTriangleArea(angle1, angle2, angle3);
+            burgerCount = getBurgerCount(burgerArea, triangleArea);
             subtotal = burgerCount * BURGER1COST;
             total = subtotal * HST;
-            triangleType = CalculateTriangleType(angle1, angle2, angle3);
+            triangleType = calculateTriangleType(angle1, angle2, angle3);
           } else if (burgerSize == 2) {
-            double burgerArea = GetBurgerArea(BURGER2SIZE);
-            double triangleArea = CalculateTriangleArea(angle1, angle2, angle3);
-            burgerCount = GetBurgerCount(burgerArea, triangleArea);
+            double burgerArea = getBurgerArea(BURGER2SIZE);
+            double triangleArea = calculateTriangleArea(angle1, angle2, angle3);
+            burgerCount = getBurgerCount(burgerArea, triangleArea);
             subtotal = burgerCount * BURGER2COST;
             total = subtotal * HST;
-            triangleType = CalculateTriangleType(angle1, angle2, angle3);
+            triangleType = calculateTriangleType(angle1, angle2, angle3);
           } else {
             System.out.println("That is not an available size!");
             continue;
@@ -118,18 +117,19 @@ public final class BurgerPlate {
     sc.close();
   }
 
-  static double GetThirdAngle(double angle1, double angle2) {
+
+  static double getThirdAngle(final double angle1, final double angle2) {
     double angle3 = 180 - angle1 - angle2;
     return angle3;
   }
 
-  static double CalculateTriangleArea(double angle1, double angle2, double angle3) {
+  static double calculateTriangleArea(final double angle1, final double angle2, final double angle3) {
     double secondSide = Math.sin(angle1) / (Math.sin(angle3) / PLATE_SIDE_LENGTH);
     double height = Math.sin(angle2) * secondSide;
     return (PLATE_SIDE_LENGTH * height) / 2;
   }
 
-  static String CalculateTriangleType(double angle1, double angle2, double angle3) {
+  static String calculateTriangleType(final double angle1, final double angle2, final double angle3) {
     if (angle1 == angle2 && angle2 == angle3) {
       return "Equilateral";
     } else if (angle1 == angle2 || angle2 == angle3 || angle1 == angle3) {
@@ -139,11 +139,11 @@ public final class BurgerPlate {
     }
   }
 
-  static double GetBurgerArea(double burgerDiameter) {
+  static double getBurgerArea(final double burgerDiameter) {
     return Math.PI * Math.pow((burgerDiameter / 2), 2);
   }
 
-  static int GetBurgerCount(double burgerArea, double plateArea) {
+  static int getBurgerCount(final double burgerArea, final double plateArea) {
     int burgerCount = (int) (plateArea / burgerArea);
     return burgerCount;
   }
