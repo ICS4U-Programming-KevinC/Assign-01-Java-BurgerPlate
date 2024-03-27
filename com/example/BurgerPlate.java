@@ -157,7 +157,7 @@ public final class BurgerPlate {
     double sinLaw = Math.sin(angle3) / PLATE_SIDE_LENGTH;
     double secondSide = Math.sin(angle1) / sinLaw;
     double height = Math.sin(angle2) * secondSide;
-    return (PLATE_SIDE_LENGTH * height) / 2;
+    return Math.abs((PLATE_SIDE_LENGTH * height) / 2);
   }
 
   static double getBurgerArea(final double burgerDiameter) {
